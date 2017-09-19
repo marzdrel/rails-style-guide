@@ -8,12 +8,12 @@ Git commits
 
 - Commit small changes often instead of doing big commits every now
   and then
-- Do not mix different issues in singe commits
-- If spot any minor style issues while working on a feature commit
-  then separately
+- Do not mix different issues in single commit
+- If you spot any minor style issues while working on a feature commit
+  them separately
 - Always review changes before commiting to avoid accidental mistakes,
-  or files added to the repository
-- Do not rush your commits, review files changes and commit messages
+  and/or to avoid random files beeing added to the repository
+- Do not rush your commits, review file changes and commit messages
   carefully before submitting
 
 Git commit messages
