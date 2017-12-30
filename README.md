@@ -105,7 +105,7 @@ the corresponding path.
       describe ".call" do
         subject { described_class }
 
-        it { should forward_to_instance(:call).with_1_args }
+        it { should forward_to_instance(:call).with_2_args }
       end
 
       describe "#call" do
@@ -140,6 +140,71 @@ resonable values. Always check if the calls was actually made in expected
 conditions and check if the expected value was passed to the call.
 
 Preffer stubs instead of dependency injection. Due to nature of Ruby semantics
-heavy dependency injection makes the code hard to reason about. Verified
-stubs also provide basic consistency checks without resorting to integration
-testing.
+heavy dependency injection makes the code unreadable hard to reason about.
+Verified stubs also provide basic consistency checks without resorting to
+integration testing.
+
+    # Iterate over provided collection of orders and return
+    # only the orders which are finished.
+
+    class Order::Finished::Selector
+      def self.call(*args)
+        new(*args).call
+      end
+
+      def initialize(orders)
+        self.orders = orders
+      end
+
+      def call
+        orders.select do |order|
+          Order::Finished::Verifier.call(order)
+        end
+      end
+
+      private
+
+      attr_accessor :orders
+    end
+
+Even though orders in this method object are collection of objects the logic
+doesn't interact with the objects at all. They are only passed to external
+class and selected based on the result. When creating specs for such cases
+there is no need to create those objects or even use doubles. In many cases
+pure symbols representing the abstract list element will do just fine. It
+will make the specs simpler and more clear. You could just as well use
+doubles instead, but if you are just passing the entity around prefer
+symbols over anything else.
+
+    require "rails_helper"
+
+    RSpec.describe Order::Finished::Selector do
+      describe ".call" do
+        subject { described_class }
+
+        it { should forward_to_instance(:call).with_1_arg }
+      end
+
+      describe "#call" do
+        let(:orders) { %i[order1 order2 order3] }
+
+        before do
+          allow(Order::Finished::Verifier)
+            .to receive(:call).and_return(true, false, true)
+        end
+
+        it "returns only finished orders" do
+          expect(service.call).to eq [:order1, :order3]
+        end
+
+        it "calls the verifier" do
+          service.call
+
+          expect(Order::Finished::Verifier)
+            .to have_received(:call)
+            .with(:order1)
+            .with(:order2)
+            .with(:order3)
+        end
+      end
+    end
