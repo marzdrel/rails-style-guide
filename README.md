@@ -33,6 +33,12 @@ Git commit messages
       bug, Fixes the bug)
     - Valid title should nicely end this sentence: "If submitted this
       commit will: Fix bug"
+    - Do not repeat commit messages if you forget to include something.
+      Either squash two commits if the changes are not pushed or just
+      explicitly describe the second (missing) change.
+    - Always focus the message on the actual change, not the big
+      picture. Avoid "Setup base for new interface", use "Add routes
+      for ...".
 
     http://project.management-system.com/ticket/123
 
