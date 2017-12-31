@@ -66,39 +66,43 @@ use class methods to provide implementation. Create snippets and marcos in your
 development evironment to make the process of createing new classes more easy
 and frictionless.
 
-    # Divide two numbers or return zero if the second argument is
-    # equal to zero.
+```ruby
+# Divide two numbers or return zero if the second argument is
+# equal to zero.
 
-    class Divider
-      def self.call(*args)
-        new(*args).call
-      end
+class Divider
+  def self.call(*args)
+    new(*args).call
+  end
 
-      def initialize(arg1, arg2)
-        self.arg1 = arg1
-        self.arg2 = arg2
-      end
+  def initialize(arg1, arg2)
+    self.arg1 = arg1
+    self.arg2 = arg2
+  end
 
-      def call
-        return 0 if arg2.zero?
-        arg1 / arg2
-      end
+  def call
+    return 0 if arg2.zero?
+    arg1 / arg2
+  end
 
-      private
+  private
 
-      attr_accessor :arg1, :arg2
-    end
+  attr_accessor :arg1, :arg2
+end
+```
 
 If instead of return value you need to work on class instance just modify the
 proxy class method to execute the logic and then return an instance instead.
 This approach shouldn't be used often outside of the facade / action objects
 used in controllers.
 
-      def self.call(*args)
-        instance = new(*args)
-        instance.call
-        instance
-      end
+```ruby
+def self.call(*args)
+  instance = new(*args)
+  instance.call
+  instance
+end
+```
 
 Method Objects Specs
 --------------------
@@ -107,33 +111,35 @@ Always create spec files for every method object. If for some reason you can't
 provide spec for given method object at the time create pending spec file with
 the corresponding path.
 
-    RSpec.describe Divider do
-      describe ".call" do
-        subject { described_class }
+```ruby
+RSpec.describe Divider do
+  describe ".call" do
+    subject { described_class }
 
-        it { should forward_to_instance(:call).with_2_args }
-      end
+    it { should forward_to_instance(:call).with_2_args }
+  end
 
-      describe "#call" do
-        let(:service) { described_class.new(10, arg) }
+  describe "#call" do
+    let(:service) { described_class.new(10, arg) }
 
-        context "with non-zero argument" do
-          let(:arg) { 5 }
+    context "with non-zero argument" do
+      let(:arg) { 5 }
 
-          it "returns division result" do
-            expect(service.all).to eq 2
-          end
-        end
-
-        context "with zero argument" do
-          let(:arg) { 0 }
-
-          it "returns 0" do
-            expect(service.call).to eq 0
-          end
-        end
+      it "returns division result" do
+        expect(service.all).to eq 2
       end
     end
+
+    context "with zero argument" do
+      let(:arg) { 0 }
+
+      it "returns 0" do
+        expect(service.call).to eq 0
+      end
+    end
+  end
+end
+```
 
 If the logic provides vastly different paths based on the input always create
 corresponding branches using contexts (zero / non zero input in the Divider
@@ -150,28 +156,30 @@ heavy dependency injection makes the code unreadable hard to reason about.
 Verified stubs also provide basic consistency checks without resorting to
 integration testing.
 
-    # Iterate over provided collection of orders and return
-    # only the orders which are finished.
+```ruby
+# Iterate over provided collection of orders and return
+# only the orders which are finished.
 
-    class Order::Finished::Selector
-      def self.call(*args)
-        new(*args).call
-      end
+class Order::Finished::Selector
+  def self.call(*args)
+    new(*args).call
+  end
 
-      def initialize(orders)
-        self.orders = orders
-      end
+  def initialize(orders)
+    self.orders = orders
+  end
 
-      def call
-        orders.select do |order|
-          Order::Finished::Verifier.call(order)
-        end
-      end
-
-      private
-
-      attr_accessor :orders
+  def call
+    orders.select do |order|
+      Order::Finished::Verifier.call(order)
     end
+  end
+
+  private
+
+  attr_accessor :orders
+end
+```
 
 Even though orders in this method object are collection of objects the logic
 doesn't interact with the objects at all. They are only passed to external
@@ -182,35 +190,37 @@ will make the specs simpler and more clear. You could just as well use
 doubles instead, but if you are just passing the entity around prefer
 symbols over anything else.
 
-    require "rails_helper"
+```ruby
+require "rails_helper"
 
-    RSpec.describe Order::Finished::Selector do
-      describe ".call" do
-        subject { described_class }
+RSpec.describe Order::Finished::Selector do
+  describe ".call" do
+    subject { described_class }
 
-        it { should forward_to_instance(:call).with_1_arg }
-      end
+    it { should forward_to_instance(:call).with_1_arg }
+  end
 
-      describe "#call" do
-        let(:orders) { %i[order1 order2 order3] }
+  describe "#call" do
+    let(:orders) { %i[order1 order2 order3] }
 
-        before do
-          allow(Order::Finished::Verifier)
-            .to receive(:call).and_return(true, false, true)
-        end
-
-        it "returns only finished orders" do
-          expect(service.call).to eq [:order1, :order3]
-        end
-
-        it "calls the verifier" do
-          service.call
-
-          expect(Order::Finished::Verifier)
-            .to have_received(:call)
-            .with(:order1)
-            .with(:order2)
-            .with(:order3)
-        end
-      end
+    before do
+      allow(Order::Finished::Verifier)
+        .to receive(:call).and_return(true, false, true)
     end
+
+    it "returns only finished orders" do
+      expect(service.call).to eq [:order1, :order3]
+    end
+
+    it "calls the verifier" do
+      service.call
+
+      expect(Order::Finished::Verifier)
+        .to have_received(:call)
+        .with(:order1)
+        .with(:order2)
+        .with(:order3)
+    end
+  end
+end
+```
