@@ -4,25 +4,25 @@
 
 - Launch PR Master 4.5
 
-![PR Master login](screenshots/PR_Master_login.png)
+![PR Master login](screenshots/Access_cards/PR_Master_login.png)
 
 - Log in to PR Master
 
-![PR Master users](screenshots/PR_Master_main.png)
+![PR Master users](screenshots/Access_cards/PR_Master_main.png)
 
 - Click *Odczytaj Bufory Zdarzeń*
 
 - Click *Szybka edycja użytkownika*
 
-![PR Master users](screenshots/PR_Master_users.png)
+![PR Master users](screenshots/Access_cards/PR_Master_users.png)
 
 - Click *Dodaj*
 
-![PR Master users](screenshots/PR_Master_add_user_1.png)
+![PR Master users](screenshots/Access_cards/PR_Master_add_user_1.png)
 
 - Choose Typ *NORMAL*
 
-![PR Master users](screenshots/PR_Master_add_user_2.png)
+![PR Master users](screenshots/Access_cards/PR_Master_add_user_2.png)
 
 - Enter first name and last name in *Imię* and *Nazwisko* fields
 
@@ -30,11 +30,11 @@
 
 - Click on tab *Identyfikacja*
 
-![PR Master users](screenshots/PR_Master_add_user_3.png)
+![PR Master users](screenshots/Access_cards/PR_Master_add_user_3.png)
 
 - Click *Czytaj kartę...*
 
-![PR Master users](screenshots/PR_Master_add_user_4.png)
+![PR Master users](screenshots/Access_cards/PR_Master_add_user_4.png)
 
 - Choose card reader
 
