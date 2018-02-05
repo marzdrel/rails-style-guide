@@ -256,5 +256,13 @@ describe "definitions" do
   it "#kind" do
     should define_enum_for(:kind).with(bad: 0, average: 1, good: 2, awesome: 3)
   end
+  
+  it "#historic_levels_build_by_day" do
+     should delegate_method(:build_by_day).to(:historic_levels).with_prefix
+  end
 end
 ```
+
+Alwasys put one empty line between two `do end` block, do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
+
+
