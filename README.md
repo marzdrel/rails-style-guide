@@ -224,3 +224,55 @@ RSpec.describe Order::Finished::Selector do
   end
 end
 ```
+
+RSpec
+-------------------
+
+Block implementation
+If you are passing block RSpec will use it as implementation of the method. All arguments provided by caller will be yielded to your block. 
+  
+  Examples:
+  - allow(sth).to receive(:foo) { do_something }
+  - allow(sth).to receive(:foo).with("args") { do_something }
+  - allow(sth).to receive(:foo).once { do_something }
+  - allow(sth).to receive(:foo).order { do_something }
+
+```ruby
+
+describe Contact do
+  it "is invalid without a firstname" do
+    contact = Contact.create(first_name: nil, email: 'ted@example.com', password: 'empirestatebuilding')
+    contact.valid?
+    expect(contact.errors[:firstname]).to include("can't be blank")
+  end
+
+  it "is invalid with a duplicate email address" do
+    Contact.create(first_name: 'Ted', email: 'ted@example.com', password: 'empirestatebuilding')
+    contact = Contact.new(first_name: 'Robin', email: 'ted@example.com', password: 'montrealcanadiens')
+    contact.valid?
+    expect(contact.errors[:emal]).to include("has already been taken")
+  end
+
+  it "is invalid without a minimum password length" do
+    contact_one = Contact.create(first_name: 'Ted', email: 'ted@example.com', password: 'empire')
+    contact_one.valid?
+    expect(Contact.errors[:password]).to include("password is too short")
+  end
+end
+```
+
+This feature supports many use cases and is very flexible. But if we don't need a comment or your tests are short and simple then it's better to use one-liner implementation.
+
+
+One-Liner implementation
+Is used for setting an expectation of the subject. One-liner implementation is faster in writing and still very readable. Using the example above if we decided to write tests for Contact with One-liner then it will looks like this
+
+```ruby
+describe Contact do
+  it { is_expected.to validate_presence_of(:firstname) }
+  it { is_expected.to validate_uniqueness_of(:email) }
+  it { is_expected.to validate_length_of(:password).is_at_least(10) }
+end
+```
+
+As we can see Block implementation needs much more steps and much more code to deal with the same job as One-liner. Of course not everything probably can be done without Block implementation but if it's only possible then it will be good to use One-liner implementation for writing tests and save codking time.
