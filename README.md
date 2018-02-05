@@ -229,6 +229,7 @@ RSpec
 -------------------
 
 Block implementation
+
 If you are passing block RSpec will use it as implementation of the method. All arguments provided by caller will be yielded to your block. 
   
   Examples:
@@ -265,6 +266,7 @@ This feature supports many use cases and is very flexible. But if we don't need 
 
 
 One-Liner implementation
+
 Is used for setting an expectation of the subject. One-liner implementation is faster in writing and still very readable. Using the example above if we decided to write tests for Contact with One-liner then it will looks like this
 
 ```ruby
