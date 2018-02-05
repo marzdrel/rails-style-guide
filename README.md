@@ -224,3 +224,37 @@ RSpec.describe Order::Finished::Selector do
   end
 end
 ```
+
+RSpec
+-------------------
+
+When passing block to single spec in genral use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name. 
+
+```ruby
+
+describe Contact do
+  it "is invalid without a firstname" do
+    ...
+  end
+end
+```
+
+In case of very trivial and repetable specs we do not use titles at all. In such cases we use one line notation using `it { ... }` syntax. Even though in general `should` notaion is discouraged in the newest versions of RSpec we still use it for such trivial examples. It reads better and it is much shorter. In general cases we use one-line notation for various types of Shoulda Matchers.
+
+```ruby
+describe Contact do
+  it { should validate_presence_of(:firstname) }
+  it { should validate_uniqueness_of(:email) }
+  it { should validate_length_of(:password).is_at_least(10) }
+end
+```
+
+If a spec one-liner exceeds 80 character revert back to a typical multi line notation. Never omit titles in multiline notation. If the spec is stil very trivial just use simple `#method` notation.
+
+```ruby
+describe "definitions" do
+  it "#kind" do
+    should define_enum_for(:kind).with(bad: 0, average: 1, good: 2, awesome: 3)
+  end
+end
+```
