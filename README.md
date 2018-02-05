@@ -263,6 +263,6 @@ describe "definitions" do
 end
 ```
 
-Alwasys put one empty line between two `do end` block, do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
+Always put one empty line between two `do end` blocks. Do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
 
 
