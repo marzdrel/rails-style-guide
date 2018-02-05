@@ -228,7 +228,7 @@ end
 RSpec
 -------------------
 
-When passing block to single spec in genral use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name. 
+When passing block to single spec in general use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name. 
 
 ```ruby
 
