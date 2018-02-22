@@ -18,3 +18,7 @@ RSpec/ImplicitExpect:
 
 Metrics/BlockLength:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - controllers/*
