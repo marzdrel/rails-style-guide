@@ -126,7 +126,7 @@ RSpec.describe Divider do
       let(:arg) { 5 }
 
       it "returns division result" do
-        expect(service.all).to eq 2
+        expect(service.call).to eq 2
       end
     end
 
