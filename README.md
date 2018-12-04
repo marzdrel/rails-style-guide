@@ -266,3 +266,13 @@ end
 Always put one empty line between two `do end` blocks. Do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
 
 
+Goodreads
+-------------------
+
+This section contains links to usefull articles, books, videos, podcasts and other resources.
+
+### Articles 
+
+[The worst mistake of computer science](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
+
+
