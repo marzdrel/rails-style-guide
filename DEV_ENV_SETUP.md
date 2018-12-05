@@ -3,6 +3,7 @@
 
 - [ ] brew
 - [ ] chrome - via browser or brew
+- [ ] Xcode tools
 - [ ] text-editor (sublime / atom / vim / other)
   Packages for sublime to smothe ruby / rails development: 
     - [ ] Package Control
@@ -12,10 +13,9 @@
     - [ ] Emmet
     - [ ] BracketHighlighter
     - [ ] ProductiveSnippetsRuby
-- [ ] Ruby On Rails Snippets
+    - [ ] Ruby On Rails Snippets
 - [ ] postgreapp with postico
 - [ ] iTerm2 (with zsh and oh-my-zsh)
-- [ ] Xcode tools
 - [ ] [Spectacle](https://www.spectacleapp.com/)
 - [ ] instal rvm / rbenv
 - [ ] when using rbenv with zsh do:
