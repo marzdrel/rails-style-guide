@@ -1,4 +1,5 @@
 MAC OS Dev environment for rails development
+============
 
 [] - brew
 [] - chrome - via browser or brew
@@ -16,10 +17,11 @@ MAC OS Dev environment for rails development
 [] - Xcode tools
 [] - Spectacle
 [] - instal rvm / rbenv
-[] - when using rbenv with zsh do   $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshenv
-          $ echo 'eval "$(rbenv init -)"' >> ~/.zshenv
-          $ echo 'source $HOME/.zshenv' >> ~/.zshrc
-          $ exec $SHELL
+[] - when using rbenv with zsh do:
+    - $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshenv
+    - $ echo 'eval "$(rbenv init -)"' >> ~/.zshenv
+    - $ echo 'source $HOME/.zshenv' >> ~/.zshrc
+    - $ exec $SHELL
 [] - git configuration setting global user.name email etc. adding SSH key
 [] - [redis via homebrew](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298)
 [] - GUI for git if using one (my pick gitkraken)
