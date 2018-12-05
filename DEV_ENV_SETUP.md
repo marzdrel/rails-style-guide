@@ -1,4 +1,4 @@
-MAC OS Dev environment for rails development
+# MAC OS Dev environment for rails development
 ============
 
 [] - brew
