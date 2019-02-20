@@ -228,7 +228,7 @@ end
 RSpec
 -------------------
 
-When passing block to single spec in general use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name. 
+When passing block to single spec in general use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name.
 
 ```ruby
 
@@ -256,7 +256,7 @@ describe "definitions" do
   it "#kind" do
     should define_enum_for(:kind).with(bad: 0, average: 1, good: 2, awesome: 3)
   end
-  
+
   it "#historic_levels_build_by_day" do
      should delegate_method(:build_by_day).to(:historic_levels).with_prefix
   end
@@ -266,12 +266,22 @@ end
 Always put one empty line between two `do end` blocks. Do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
 
 
+Ruby Code Style Guide
+-------------------
+
+Projects related to style guide and code formatting:
+
+https://github.com/testdouble/standard
+https://github.com/samphippen/rubyfmt
+https://github.com/rubocop-hq/rubocop
+
+
 Goodreads
 -------------------
 
 This section contains links to usefull articles, books, videos, podcasts and other resources.
 
-### Articles 
+### Articles
 
 [The worst mistake of computer science](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
 
