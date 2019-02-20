@@ -224,6 +224,18 @@ RSpec.describe Order::Finished::Selector do
   end
 end
 ```
+Objects Spec
+-------------------
+Every newly created file should be created with corresponding spec file.
+
+```ruby
+# path to file: app/services/some/example/object_spec.rb
+# path to spec file: spec/services/some/example/object_spec.rb
+
+RSpec.describe Some::Example::Object do
+  pending
+end
+```
 
 RSpec
 -------------------
@@ -278,6 +290,14 @@ Projects related to style guide and code formatting:
 - https://github.com/samphippen/rubyfmt
 - https://github.com/rubocop-hq/rubocop
 
+Ruby
+-------------------
+Do not use string concatenation or interpolation.
+Use `.format` instead
+
+[ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format)
+
+[examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/)
 
 Goodreads
 -------------------
