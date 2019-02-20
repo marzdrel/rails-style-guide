@@ -263,7 +263,10 @@ describe "definitions" do
 end
 ```
 
-Always put one empty line between two `do end` blocks. Do not place space between oneline blocks. Always group onelines first, then place multiline block entries.
+Always put one empty line between two `do end` blocks. Do not place
+space between oneline blocks. Always group onelines first, then place
+multiline block entries. This rule applies to all kind of definitions,
+including examples `it`, `before` blocks or `let` definitions as well.
 
 
 Ruby Code Style Guide
