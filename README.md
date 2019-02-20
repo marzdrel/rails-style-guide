@@ -228,7 +228,9 @@ end
 RSpec
 -------------------
 
-When passing block to single spec in general use multiline `do ... end` notation. Always use double quotes around spec title. Do not use parenthesis after `it` method name.
+When passing block to single spec in general use multiline `do ...
+end` notation. Always use double quotes around spec title. Do not use
+parenthesis after `it` method name.
 
 ```ruby
 
@@ -239,7 +241,12 @@ describe Contact do
 end
 ```
 
-In case of very trivial and repetable specs we do not use titles at all. In such cases we use one line notation using `it { ... }` syntax. Even though in general `should` notaion is discouraged in the newest versions of RSpec we still use it for such trivial examples. It reads better and it is much shorter. In general cases we use one-line notation for various types of Shoulda Matchers.
+In case of very trivial and repetable specs we do not use titles
+at all. In such cases we use one line notation using `it { ... }`
+syntax. Even though in general `should` notaion is discouraged in the
+newest versions of RSpec we still use it for such trivial examples. It
+reads better and it is much shorter. In general cases we use one-line
+notation for various types of Shoulda Matchers.
 
 ```ruby
 describe Contact do
@@ -249,7 +256,9 @@ describe Contact do
 end
 ```
 
-If a spec one-liner exceeds 80 character revert back to a typical multi line notation. Never omit titles in multiline notation. If the spec is stil very trivial just use simple `#method` notation.
+If a spec one-liner exceeds 80 character revert back to a typical multi
+line notation. Never omit titles in multiline notation. If the spec is
+stil very trivial just use simple `#method` notation.
 
 ```ruby
 describe "definitions" do
