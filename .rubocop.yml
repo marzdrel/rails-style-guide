@@ -4,7 +4,7 @@ Rails:
   Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
   Exclude:
     - app/assets/images/**/*
     - app/assets/javascripts/**/*
@@ -25,18 +25,40 @@ AllCops:
     - .git-hooks/**/*
     - files/**/*
 
-Lint/UnneededDisable:
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/ImplicitExpect:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/controllers/**/*
+    - spec/system/**/*
+    - spec/requests/**/*
 
 Metrics/ModuleLength:
   Exclude:
     - app/views/**/*
+    - spec/**/*
 
 Metrics/BlockLength:
   Exclude:
     - app/views/**/*
+    - spec/**/*
     - Guardfile
     - lib/tasks/auto_annotate_models.rake
+
+Metrics/MethodLength:
+  Exclude:
+    - app/models/**/*_scope.rb
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required
 
 Style/BracesAroundHashParameters:
   Exclude:
@@ -70,10 +92,20 @@ RSpec/DescribedClass:
 RSpec/ExampleWording:
   Enabled: true
 
+RSpec::VerifiedDoubles:
+  Exclude:
+    - spec/models/**/*_scope_spec.rb
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-TrailingCommaInLiteral:
+Naming/FileName:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 TrailingCommaInArguments:
@@ -86,4 +118,7 @@ AsciiComments:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/IfUnlessModifier:
   Enabled: false
