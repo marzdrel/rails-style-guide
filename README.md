@@ -44,8 +44,8 @@ Git commit messages
 
 Details:
 
-http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
+- http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+- https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
 
 Method Objects
 -------------------
@@ -271,9 +271,9 @@ Ruby Code Style Guide
 
 Projects related to style guide and code formatting:
 
-https://github.com/testdouble/standard
-https://github.com/samphippen/rubyfmt
-https://github.com/rubocop-hq/rubocop
+- https://github.com/testdouble/standard
+- https://github.com/samphippen/rubyfmt
+- https://github.com/rubocop-hq/rubocop
 
 
 Goodreads
