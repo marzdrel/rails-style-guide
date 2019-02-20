@@ -286,6 +286,19 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 
 ### Articles
 
-[The worst mistake of computer science](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
+[The worst mistake of computer science - Paul Draper](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
+[7 Patterns to Refactor Fat ActiveRecord Models - Bryan Helmkamp (2012)](https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models/)
 
+### Videos
+
+[Nothing is Something - Sandi Metz (2015)](https://www.youtube.com/watch?v=29MAL8pJImQ)
+[Boundaries - Gary Bernhardt (2012)](https://www.destroyallsoftware.com/talks/boundaries)
+[Y Not - Jim Weirch (2012)](https://www.youtube.com/watch?v=FITJMJjASUs)
+
+### Books
+
+[Practical Object-Oriented Design (POODR) - Sandi Metz](https://www.poodr.com/)
+[Rails 5 Test Prescriptions - Noel Rappin](https://pragprog.com/book/nrtest3/rails-5-test-prescriptions)
+[Everyday Rails Testing with RSpec - Aaron Sumner](https://leanpub.com/everydayrailsrspec)
+[Exceptional Ruby - Avdi Grimm](http://exceptionalruby.com/)
 
