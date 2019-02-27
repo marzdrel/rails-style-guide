@@ -291,17 +291,17 @@ including examples `it`, `before` blocks or `let` definitions as well.
 
 Rails
 -------------------
-Whenever record is being created or updated use `create! || update!` to prevent silent failing.
-Use `update || create` only with corresponding `if` check
+Whenever record is being created or updated use `.create!` or `#update!` to prevent silent failing.
+Use `#update` or `.create` only with corresponding `if` check.
 
 Ruby
 -------------------
-Do not use string concatenation or interpolation.
-Use `.format` instead
+Do not use string concatenation or interpolation. Use `Kernel.format` instead. Most of the time
+we use pythonic version of `#format` available via
+[powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
 
-[ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format)
-
-[examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/)
+Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
+[examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
 
 Ruby Code Style Guide
 -------------------
@@ -319,19 +319,19 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 
 ### Articles
 
-[The worst mistake of computer science - Paul Draper](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
-[7 Patterns to Refactor Fat ActiveRecord Models - Bryan Helmkamp (2012)](https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models/)
+- [The worst mistake of computer science - Paul Draper](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
+- [7 Patterns to Refactor Fat ActiveRecord Models - Bryan Helmkamp (2012)](https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models/)
 
 ### Videos
 
-[Nothing is Something - Sandi Metz (2015)](https://www.youtube.com/watch?v=29MAL8pJImQ)
-[Boundaries - Gary Bernhardt (2012)](https://www.destroyallsoftware.com/talks/boundaries)
-[Y Not - Jim Weirch (2012)](https://www.youtube.com/watch?v=FITJMJjASUs)
+- [Nothing is Something - Sandi Metz (2015)](https://www.youtube.com/watch?v=29MAL8pJImQ)
+- [Boundaries - Gary Bernhardt (2012)](https://www.destroyallsoftware.com/talks/boundaries)
+- [Y Not - Jim Weirch (2012)](https://www.youtube.com/watch?v=FITJMJjASUs)
 
 ### Books
 
-[Practical Object-Oriented Design (POODR) - Sandi Metz](https://www.poodr.com/)
-[Rails 5 Test Prescriptions - Noel Rappin](https://pragprog.com/book/nrtest3/rails-5-test-prescriptions)
-[Everyday Rails Testing with RSpec - Aaron Sumner](https://leanpub.com/everydayrailsrspec)
-[Exceptional Ruby - Avdi Grimm](http://exceptionalruby.com/)
+- [Practical Object-Oriented Design (POODR) - Sandi Metz](https://www.poodr.com/)
+- [Rails 5 Test Prescriptions - Noel Rappin](https://pragprog.com/book/nrtest3/rails-5-test-prescriptions)
+- [Everyday Rails Testing with RSpec - Aaron Sumner](https://leanpub.com/everydayrailsrspec)
+- [Exceptional Ruby - Avdi Grimm](http://exceptionalruby.com/)
 
