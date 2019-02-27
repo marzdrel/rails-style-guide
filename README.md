@@ -229,7 +229,7 @@ Objects Spec
 Every newly created file should be created with corresponding spec file.
 
 ```ruby
-# path to file: app/services/some/example/object_spec.rb
+# path to file: app/services/some/example/object.rb
 # path to spec file: spec/services/some/example/object_spec.rb
 
 RSpec.describe Some::Example::Object do
