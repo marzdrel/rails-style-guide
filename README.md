@@ -239,7 +239,7 @@ with explanation why the spec is missing.
 # path to spec file: spec/services/some/example/object_spec.rb
 
 RSpec.describe Some::Example::Object do
-  describe #call do
+  describe "#call" do
     pending __FILE__
 
     # FIXME I need help with this spec. I do not know how to test this
