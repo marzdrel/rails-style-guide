@@ -224,21 +224,30 @@ RSpec.describe Order::Finished::Selector do
   end
 end
 ```
-Objects Spec
+
+RSpec
 -------------------
-Every newly created file should be created with corresponding spec file.
+
+Every newly created file should be created with corresponding spec file. In
+general, always write spec for your code. Preferably write specs before
+writing the implementation. If for some reason you cannot spec the current
+logic, then at least create pending spec file. Always include comment
+with explanation why the spec is missing.
 
 ```ruby
 # path to file: app/services/some/example/object.rb
 # path to spec file: spec/services/some/example/object_spec.rb
 
 RSpec.describe Some::Example::Object do
-  pending
+  describe #call do
+    pending __FILE__
+
+    # FIXME I need help with this spec. I do not know how to test this
+    # implementation. It uses new framework and there is no examples
+    # for this kind of logic in the codebase yet.
+  end
 end
 ```
-
-RSpec
--------------------
 
 When passing block to single spec in general use multiline `do ...
 end` notation. Always use double quotes around spec title. Do not use
