@@ -251,13 +251,20 @@ end
 
 When passing block to single spec in general use multiline `do ...
 end` notation. Always use double quotes around spec title. Do not use
-parenthesis after `it` method name.
+parenthesis after `it` method name. Avoid condition in spec names.
+If you need to describe what state is needed for given behaviour,
+just wrap the text in `context` block. Use this practice even if there
+is no more branches for this example and no other specs. More often
+than not, it makes sence to add another variant, where opposite
+condition is described.
 
 ```ruby
 
 describe Contact do
-  it "is invalid without a firstname" do
-    ...
+  context "without firstname" do
+    it "is invalid" do
+      ...
+    end
   end
 end
 ```
