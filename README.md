@@ -358,6 +358,7 @@ Projects related to style guide and code formatting:
 - https://github.com/testdouble/standard
 - https://github.com/samphippen/rubyfmt
 - https://github.com/rubocop-hq/rubocop
+- https://github.com/uohzxela/clean-code-ruby
 
 Goodreads
 -------------------
