@@ -29,3 +29,14 @@
 - [ ] [cheatsheetapp](https://www.cheatsheetapp.com/CheatSheet/)
 - [ ] brew install libsodium
 - [ ] brew install node (for NPM)
+- [ ] gem install hirb
+    - in ~/.irbc (create file if it does not exist) add:
+	```ruby
+	if defined? Rails
+  	  begin
+    	    require 'hirb'
+    	    Hirb.enable
+  	  rescue LoadError
+  	  end
+	end
+	```
