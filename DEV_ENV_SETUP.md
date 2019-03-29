@@ -5,7 +5,7 @@
 - [ ] chrome - via browser or brew
 - [ ] Xcode tools
 - [ ] text-editor (sublime / atom / vim / other)
-  Packages for sublime to smothe ruby / rails development: 
+  Packages for sublime to smothe ruby / rails development:
     - [ ] Package Control
     - [ ] SublimeLinter
     - [ ] AllAutoCompletes
@@ -34,8 +34,8 @@
 	```ruby
 	if defined? Rails
   	  begin
-    	    require 'hirb'
-    	    Hirb.enable
+        require 'hirb'
+  	    Hirb.enable
   	  rescue LoadError
   	  end
 	end
