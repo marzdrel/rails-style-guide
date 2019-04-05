@@ -5,7 +5,7 @@
 - [ ] chrome - via browser or brew
 - [ ] Xcode tools
 - [ ] text-editor (sublime / atom / vim / other)
-  Packages for sublime to smothe ruby / rails development: 
+  Packages for sublime to smothe ruby / rails development:
     - [ ] Package Control
     - [ ] SublimeLinter
     - [ ] AllAutoCompletes
@@ -29,3 +29,14 @@
 - [ ] [cheatsheetapp](https://www.cheatsheetapp.com/CheatSheet/)
 - [ ] brew install libsodium
 - [ ] brew install node (for NPM)
+- [ ] gem install hirb
+    - in ~/.irbc (create file if it does not exist) add:
+	```ruby
+	if defined? Rails
+  	  begin
+        require 'hirb'
+  	    Hirb.enable
+  	  rescue LoadError
+  	  end
+	end
+	```
