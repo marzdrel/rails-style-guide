@@ -92,7 +92,7 @@ RSpec/DescribedClass:
 RSpec/ExampleWording:
   Enabled: true
 
-RSpec::VerifiedDoubles:
+RSpec/VerifiedDoubles:
   Exclude:
     - spec/models/**/*_scope_spec.rb
 
