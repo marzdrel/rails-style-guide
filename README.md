@@ -47,6 +47,33 @@ Details:
 - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 - https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
 
+GitHub flow
+-------------------
+
+- Begin from updating a master branch:
+
+  ```bash
+  $ git checkout master
+  $ git pull origin master
+  ```
+
+- Create a new branch for your new feature:
+
+  ```bash
+  $ git checkout -b new_feature_branch # use snake_case for a branch name
+  ```
+
+- Commit your changes often to allow earlier code review. After commiting very first changes, push your branch to remote and create a [draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/):
+
+  ```bash
+  $ git push origin new_feature_branch
+  ```
+
+  ![Github draft Pull Request](https://i1.wp.com/user-images.githubusercontent.com/3477155/52671177-5d0e0100-2ee8-11e9-8645-bdd923b7d93b.gif?resize=1024%2C512&ssl=1)
+
+- Add a link to a newly created PR to the very end of a Trello ticket description.
+- When ready, change the status to 'Ready for review' near the bottom of your pull request to remove the draft state.
+
 Method Objects
 -------------------
 
@@ -382,4 +409,3 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 - [Rails 5 Test Prescriptions - Noel Rappin](https://pragprog.com/book/nrtest3/rails-5-test-prescriptions)
 - [Everyday Rails Testing with RSpec - Aaron Sumner](https://leanpub.com/everydayrailsrspec)
 - [Exceptional Ruby - Avdi Grimm](http://exceptionalruby.com/)
-
