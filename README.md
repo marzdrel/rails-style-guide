@@ -410,6 +410,11 @@ Do not use string concatenation or interpolation. Use `Kernel.format` instead. M
 we use pythonic version of `#format` available via
 [powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
 
+```ruby
+# Add this to the Gemfile to enable Powerpack `#format`
+gem "powerpack", require: "powerpack/string/format"
+```
+
 Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
 [examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
 
