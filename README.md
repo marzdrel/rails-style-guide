@@ -340,6 +340,34 @@ space between oneline blocks. Always group onelines first, then place
 multiline block entries. This rule applies to all kind of definitions,
 including examples `it`, `before` blocks or `let` definitions as well.
 
+```ruby
+describe "#call" do
+    # No spaces between one line blocks
+    let(:order) { instance_double(Order) }
+    let(:instance) { described_class.new(order, attributes) }
+    let(:uuid) { "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }
+    let(:order_uuid) { "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy" }
+    let(:price) { "137.00" }
+    # Space here
+    let(:attributes) do
+      {
+        uuid: uuid,
+        order_uuid: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+        amount: "%.2f".format(price),
+        headers: { "HTTP_VERSION" => "1" },
+      }
+    end
+    # And here
+    let(:params) do
+      # ...
+    end
+    # And obviously here
+    context "" do
+      # ...
+    end
+end
+```
+
 Sidekiq
 -------------------
 Do not pass complex object as a parameters to methods which schedule the jobs.
