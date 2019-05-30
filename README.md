@@ -322,7 +322,15 @@ describe "definitions" do
   end
 
   it "#historic_levels_build_by_day" do
-     should delegate_method(:build_by_day).to(:historic_levels).with_prefix
+    should delegate_method(:build_by_day).to(:historic_levels).with_prefix
+  end
+
+  it "#amount" do
+    # When breaking a chain of methods do so for each dot '.'
+    expect(model)
+      .to have_db_column(:uid)
+      .of_type(:string)
+      .with_options(null: false)
   end
 end
 ```
