@@ -255,16 +255,21 @@ end
 RSpec
 -------------------
 
-Every newly created file should be created with corresponding spec file. In
-general, always write spec for your code. Preferably write specs before
+Every newly created file should be created with a corresponding spec file.
+When staging changes for commit make sure that a staged file has a corresponding
+spec file (if applicable):
+
+```shell
+app/services/some/example/object.rb # file
+spec/services/some/example/object_spec.rb # and its spec
+```
+
+In general, always write spec for your code. Preferably write specs before
 writing the implementation. If for some reason you cannot spec the current
 logic, then at least create pending spec file. Always include comment
 with explanation why the spec is missing.
 
 ```ruby
-# path to file: app/services/some/example/object.rb
-# path to spec file: spec/services/some/example/object_spec.rb
-
 RSpec.describe Some::Example::Object do
   describe "#call" do
     pending __FILE__
