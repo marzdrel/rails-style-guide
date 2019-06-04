@@ -3,8 +3,28 @@ Style Guides
 
 Guides for programming in good, consistent style
 
-Git commits
--------------------
+## Table of contents
+
+- [Git](#git)
+  - [How to make commits](#how-to-make-commits)
+  - [How to write commit messages](#how-to-write-commit-messages)
+  - [Suggested GitHub flow](#github-flow)
+- [RSpec](#rspec)
+- [Sidekiq](#sidekiq)
+- [Rails and Ruby tips](#rails-and-ruby-tips)
+  - [Method Objects](#method-objects)
+  - [Method Objects Specs](#method-objects-specs)
+  - [How to update records](#how-to-update-records)
+  - [How to work with strings](#how-to-work-with-strings)
+- [Ruby Code Style Guide](#ruby-code-style-guide)
+- [Goodreads](#goodreads)
+  - [Articles](#articles)
+  - [Videos](#videos)
+  - [Books](#books)
+
+## Git
+
+### How to make commits
 
 - Commit small changes often instead of doing big commits every now
   and then
@@ -16,8 +36,7 @@ Git commits
 - Do not rush your commits, review file changes and commit messages
   carefully before submitting
 
-Git commit messages
--------------------
+### How to write commit messages
 
     Capitalized, short (50 chars or less) summary
 
@@ -47,8 +66,7 @@ Details:
 - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 - https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
 
-GitHub flow
--------------------
+### Suggested GitHub flow
 
 - Begin from updating a master branch:
 
@@ -74,8 +92,7 @@ GitHub flow
 - Add a link to a newly created PR to the very end of a Trello ticket description.
 - When ready, change the status to 'Ready for review' near the bottom of your pull request to remove the draft state.
 
-Method Objects
--------------------
+### Method Objects
 
 Encapsulate application logic inside Method Objects. Do not relay on class
 methods to provide functionality. Work on class instances instead. In order to
@@ -131,8 +148,7 @@ def self.call(*args)
 end
 ```
 
-Method Objects Specs
---------------------
+### Method Objects Specs
 
 Always create spec files for every method object. If for some reason you can't
 provide spec for given method object at the time create pending spec file with
@@ -252,8 +268,7 @@ RSpec.describe Order::Finished::Selector do
 end
 ```
 
-RSpec
--------------------
+## RSpec
 
 Every newly created file should be created with a corresponding spec file.
 When staging changes for commit make sure that a staged file has a corresponding
@@ -373,8 +388,8 @@ describe "#call" do
 end
 ```
 
-Sidekiq
--------------------
+## Sidekiq
+
 Do not pass complex object as a parameters to methods which schedule the jobs.
 Sidekiq params are serialized and stored in Redis. When the job has to be
 done in context of some Record, always pass just the id (number or uuid),
@@ -404,14 +419,16 @@ class Agent::Blocker::Worker
 end
 ```
 
-Rails
--------------------
+## Rails and Ruby tips
+
+### How to update records
+
 Whenever record is being created or updated use `.create!` or `#update!` to prevent silent failing.
 Use `#update` or `.create` only with corresponding `if` check.
 
-Ruby
--------------------
-Do not use string concatenation or interpolation. Use `Kernel.format` instead. Most of the time
+### How to work with strings
+
+Do not use string concatenation and interpolation. Use `Kernel.format` instead. Most of the time
 we use pythonic version of `#format` available via
 [powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
 
@@ -423,8 +440,7 @@ gem "powerpack", require: "powerpack/string/format"
 Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
 [examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
 
-Ruby Code Style Guide
--------------------
+## Ruby Code Style Guide
 
 Projects related to style guide and code formatting:
 
@@ -433,8 +449,7 @@ Projects related to style guide and code formatting:
 - https://github.com/rubocop-hq/rubocop
 - https://github.com/uohzxela/clean-code-ruby
 
-Goodreads
--------------------
+## Goodreads
 
 This section contains links to usefull articles, books, videos, podcasts and other resources.
 
