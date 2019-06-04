@@ -14,6 +14,7 @@ Guides for programming in good, consistent style
 - [Rails and Ruby tips](#rails-and-ruby-tips)
   - [Method Objects](#method-objects)
   - [Method Objects Specs](#method-objects-specs)
+  - [Do not add custom controller actions](#do-not-add-custom-controller-actions)
   - [How to update records](#how-to-update-records)
   - [How to work with strings](#how-to-work-with-strings)
 - [Ruby Code Style Guide](#ruby-code-style-guide)
@@ -420,6 +421,50 @@ end
 ```
 
 ## Rails and Ruby tips
+
+## Do not add custom controller actions
+
+Say you have a `PaymentsController` and want to add a custom action for a web hook:
+
+```ruby
+class Admin::PaymentsController < Admin::BaseController
+  before_action :authenticate_user!
+
+  def new
+    # ...
+  end
+
+  def create
+    # ...
+  end
+
+  def update_payment
+    # web hook logic
+  end
+end
+```
+
+Instead of adding a custom method to an existing controller, create a new
+controller with a REST action, that would correspond to `update_payment`:
+
+```ruby
+class WebHooksController < ApplicationController
+
+  def update
+    # web hook logic
+  end
+end
+```
+
+This would allow to use resourceful routes instead of defining a custom route:
+
+```ruby
+  resources :web_hooks, only: [:update]
+```
+
+Details:
+
+- http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/
 
 ### How to update records
 
