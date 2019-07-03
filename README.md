@@ -3,8 +3,29 @@ Style Guides
 
 Guides for programming in good, consistent style
 
-Git commits
--------------------
+## Table of contents
+
+- [Git](#git)
+  - [How to make commits](#how-to-make-commits)
+  - [How to write commit messages](#how-to-write-commit-messages)
+  - [Suggested GitHub flow](#github-flow)
+- [RSpec](#rspec)
+- [Sidekiq](#sidekiq)
+- [Rails and Ruby tips](#rails-and-ruby-tips)
+  - [Method Objects](#method-objects)
+  - [Method Objects Specs](#method-objects-specs)
+  - [Do not add custom controller actions](#do-not-add-custom-controller-actions)
+  - [How to update records](#how-to-update-records)
+  - [How to work with strings](#how-to-work-with-strings)
+- [Ruby Code Style Guide](#ruby-code-style-guide)
+- [Goodreads](#goodreads)
+  - [Articles](#articles)
+  - [Videos](#videos)
+  - [Books](#books)
+
+## Git
+
+### How to make commits
 
 - Commit small changes often instead of doing big commits every now
   and then
@@ -16,8 +37,7 @@ Git commits
 - Do not rush your commits, review file changes and commit messages
   carefully before submitting
 
-Git commit messages
--------------------
+### How to write commit messages
 
     Capitalized, short (50 chars or less) summary
 
@@ -47,8 +67,7 @@ Details:
 - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 - https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
 
-GitHub flow
--------------------
+### Suggested GitHub flow
 
 - Begin from updating a master branch:
 
@@ -74,8 +93,7 @@ GitHub flow
 - Add a link to a newly created PR to the very end of a Trello ticket description.
 - When ready, change the status to 'Ready for review' near the bottom of your pull request to remove the draft state.
 
-Method Objects
--------------------
+### Method Objects
 
 Encapsulate application logic inside Method Objects. Do not relay on class
 methods to provide functionality. Work on class instances instead. In order to
@@ -131,8 +149,7 @@ def self.call(*args)
 end
 ```
 
-Method Objects Specs
---------------------
+### Method Objects Specs
 
 Always create spec files for every method object. If for some reason you can't
 provide spec for given method object at the time create pending spec file with
@@ -252,19 +269,23 @@ RSpec.describe Order::Finished::Selector do
 end
 ```
 
-RSpec
--------------------
+## RSpec
 
-Every newly created file should be created with corresponding spec file. In
-general, always write spec for your code. Preferably write specs before
+Every newly created file should be created with a corresponding spec file.
+When staging changes for commit make sure that a staged file has a corresponding
+spec file (if applicable):
+
+```shell
+app/services/some/example/object.rb # file
+spec/services/some/example/object_spec.rb # and its spec
+```
+
+In general, always write spec for your code. Preferably write specs before
 writing the implementation. If for some reason you cannot spec the current
 logic, then at least create pending spec file. Always include comment
 with explanation why the spec is missing.
 
 ```ruby
-# path to file: app/services/some/example/object.rb
-# path to spec file: spec/services/some/example/object_spec.rb
-
 RSpec.describe Some::Example::Object do
   describe "#call" do
     pending __FILE__
@@ -322,7 +343,15 @@ describe "definitions" do
   end
 
   it "#historic_levels_build_by_day" do
-     should delegate_method(:build_by_day).to(:historic_levels).with_prefix
+    should delegate_method(:build_by_day).to(:historic_levels).with_prefix
+  end
+
+  it "#amount" do
+    # When breaking a chain of methods do so for each dot '.'
+    expect(model)
+      .to have_db_column(:uid)
+      .of_type(:string)
+      .with_options(null: false)
   end
 end
 ```
@@ -332,8 +361,36 @@ space between oneline blocks. Always group onelines first, then place
 multiline block entries. This rule applies to all kind of definitions,
 including examples `it`, `before` blocks or `let` definitions as well.
 
-Sidekiq
--------------------
+```ruby
+describe "#call" do
+    # No spaces between one line blocks
+    let(:order) { instance_double(Order) }
+    let(:instance) { described_class.new(order, attributes) }
+    let(:uuid) { "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }
+    let(:order_uuid) { "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy" }
+    let(:price) { "137.00" }
+    # Space here
+    let(:attributes) do
+      {
+        uuid: uuid,
+        order_uuid: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+        amount: "%.2f".format(price),
+        headers: { "HTTP_VERSION" => "1" },
+      }
+    end
+    # And here
+    let(:params) do
+      # ...
+    end
+    # And obviously here
+    context "" do
+      # ...
+    end
+end
+```
+
+## Sidekiq
+
 Do not pass complex object as a parameters to methods which schedule the jobs.
 Sidekiq params are serialized and stored in Redis. When the job has to be
 done in context of some Record, always pass just the id (number or uuid),
@@ -363,22 +420,72 @@ class Agent::Blocker::Worker
 end
 ```
 
-Rails
--------------------
+## Rails and Ruby tips
+
+## Do not add custom controller actions
+
+Say you have a `PaymentsController` and want to add a custom action for a web hook:
+
+```ruby
+class Admin::PaymentsController < Admin::BaseController
+  before_action :authenticate_user!
+
+  def new
+    # ...
+  end
+
+  def create
+    # ...
+  end
+
+  def update_payment
+    # web hook logic
+  end
+end
+```
+
+Instead of adding a custom method to an existing controller, create a new
+controller with a REST action, that would correspond to `update_payment`:
+
+```ruby
+class WebHooksController < ApplicationController
+
+  def update
+    # web hook logic
+  end
+end
+```
+
+This would allow to use resourceful routes instead of defining a custom route:
+
+```ruby
+  resources :web_hooks, only: [:update]
+```
+
+Details:
+
+- http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/
+
+### How to update records
+
 Whenever record is being created or updated use `.create!` or `#update!` to prevent silent failing.
 Use `#update` or `.create` only with corresponding `if` check.
 
-Ruby
--------------------
-Do not use string concatenation or interpolation. Use `Kernel.format` instead. Most of the time
+### How to work with strings
+
+Do not use string concatenation and interpolation. Use `Kernel.format` instead. Most of the time
 we use pythonic version of `#format` available via
 [powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
+
+```ruby
+# Add this to the Gemfile to enable Powerpack `#format`
+gem "powerpack", require: "powerpack/string/format"
+```
 
 Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
 [examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
 
-Ruby Code Style Guide
--------------------
+## Ruby Code Style Guide
 
 Projects related to style guide and code formatting:
 
@@ -387,8 +494,7 @@ Projects related to style guide and code formatting:
 - https://github.com/rubocop-hq/rubocop
 - https://github.com/uohzxela/clean-code-ruby
 
-Goodreads
--------------------
+## Goodreads
 
 This section contains links to usefull articles, books, videos, podcasts and other resources.
 
