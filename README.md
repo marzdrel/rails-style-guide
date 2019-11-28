@@ -505,6 +505,7 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 - [The 80/24 rule (2019)](https://blog.ploeh.dk/2019/11/04/the-80-24-rule/)
 - [Types of Coupling (2015)](https://thoughtbot.com/blog/types-of-coupling)
 - [Let's Not (2019)](https://thoughtbot.com/blog/lets-not)
+- [Get Rid of That Code Smell – Control Couple (2012)](https://solnic.codes/2012/04/11/get-rid-of-that-code-smell-control-couple/)
 
 ### Videos
 
