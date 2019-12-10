@@ -511,6 +511,7 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 ### Videos
 
 - [Nothing is Something - Sandi Metz (2015)](https://www.youtube.com/watch?v=29MAL8pJImQ)
+- [Refactoring Ruby with Monads (2014)](https://codon.com/refactoring-ruby-with-monads)
 - [Boundaries - Gary Bernhardt (2012)](https://www.destroyallsoftware.com/talks/boundaries)
 - [Y Not - Jim Weirch (2012)](https://www.youtube.com/watch?v=FITJMJjASUs)
 
