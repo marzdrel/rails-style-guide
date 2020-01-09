@@ -507,6 +507,7 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 - [Let's Not (2019)](https://thoughtbot.com/blog/lets-not)
 - [Get Rid of That Code Smell – Control Couple (2012)](https://solnic.codes/2012/04/11/get-rid-of-that-code-smell-control-couple/)
 - [Good design and type safety in Yahtzee | Haskell (2019](http://h2.jaguarpaw.co.uk/posts/good-design-and-type-safety-in-yahtzee/)
+- [The Guest: A Guide To Code Hospitality by Nadia Odunayo (2016)](https://www.youtube.com/watch?v=hHzWG1FltaE)
 
 ### Videos
 
