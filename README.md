@@ -17,6 +17,7 @@ Guides for programming in good, consistent style
   - [Do not add custom controller actions](#do-not-add-custom-controller-actions)
   - [How to update records](#how-to-update-records)
   - [How to work with strings](#how-to-work-with-strings)
+  - [How to work with migrations](#how-to-work-with-migrations)
 - [Ruby Code Style Guide](#ruby-code-style-guide)
 - [Goodreads](#goodreads)
   - [Articles](#articles)
@@ -473,17 +474,27 @@ Use `#update` or `.create` only with corresponding `if` check.
 
 ### How to work with strings
 
-Do not use string concatenation and interpolation. Use `Kernel.format` instead. Most of the time
-we use pythonic version of `#format` available via
-[powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
+Do not use string concatenation and interpolation, use `Kernel.format` (`Kernel%sprintf`'s alias) instead:
 
 ```ruby
-# Add this to the Gemfile to enable Powerpack `#format`
-gem "powerpack", require: "powerpack/string/format"
+format("Hello %<name>s!", name: "Tom") # => "Hello Tom!"
 ```
 
-Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
-[examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
+Details:
+
+- https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format
+- https://batsov.com/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/
+- https://www.rubyguides.com/2012/01/ruby-string-formatting/
+
+### How to work with migrations
+
+One of the biggest pains when using `structure.sql` is ensuring that only the required changes get committed to that file. When you pull someone’s branch and run the migrations specific to that branch, your `structure.sql` will now contain some changes. Say, you then go back to working on your own branch and generate a new migration. Your `structure.sql` file will now contain both your branch’s and the other branch’s changes. This only gets  worse with growing number of migrations from different not-yet-or-never-to-be merged branches.
+
+Here is the strategy to ensure that `structure.sql` file only contains the necessary changes to a specific branch. Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n`, where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
+
+Details:
+
+- https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html
 
 ## Ruby Code Style Guide
 
