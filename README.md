@@ -474,14 +474,17 @@ Use `#update` or `.create` only with corresponding `if` check.
 
 ### How to work with strings
 
-Do not use string concatenation and interpolation, use [Kernel.format](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) (`Kernel%sprintf`'s alias) instead:
+Do not use string concatenation and interpolation, use `Kernel.format` (`Kernel%sprintf`'s alias) instead:
 
 ```ruby
 format("Hello %<name>s!", name: "Tom") # => "Hello Tom!"
 ```
 
-Read more [here](https://batsov.com/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/) and
-[here](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
+Details:
+
+- https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format
+- https://batsov.com/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/
+- https://www.rubyguides.com/2012/01/ruby-string-formatting/
 
 ### How to work with migrations
 
@@ -489,7 +492,9 @@ One of the biggest pains when using `structure.sql` is ensuring that only the re
 
 Here is the strategy to ensure that `structure.sql` file only contains the necessary changes to a specific branch. Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n`, where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
 
-[Read more](https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html)
+Details:
+
+- https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html
 
 ## Ruby Code Style Guide
 
