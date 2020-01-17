@@ -474,17 +474,22 @@ Use `#update` or `.create` only with corresponding `if` check.
 
 ### How to work with strings
 
-Do not use string concatenation and interpolation. Use `Kernel.format` instead. Most of the time
-we use pythonic version of `#format` available via
-[powerpack](https://www.rubydoc.info/gems/powerpack/String#format-instance_method).
+Do not use string concatenation and interpolation, use [Kernel.format](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) (`Kernel%sprintf`'s alias) instead:
 
 ```ruby
-# Add this to the Gemfile to enable Powerpack `#format`
-gem "powerpack", require: "powerpack/string/format"
+format("Your order id is %<order_id>s", order_id: 2)
+# => "Your order id is 2"
+format(
+  "%<title>s - %<description>s - %<country_code>s",
+  title: "title",
+  description: "description",
+  country_code: "country_code",
+)
+# => "title - description - country_code"
 ```
 
-Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
-[examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
+Read more [here](https://batsov.com/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/) and
+[here](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
 
 ### How to work with migrations
 
