@@ -488,9 +488,13 @@ Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-
 
 ### How to work with migrations
 
-Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n` where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
+One of the biggest pains when using `structure.sql` is ensuring that only the required changes get committed to that file. When you pull someone’s branch and run the migrations specific to that branch, your `structure.sql` will now contain some changes. Say, you then go back to working on your own branch and generate a new migration. Your `structure.sql` file will now contain both your branch’s and the other branch’s changes. This only gets  worse with growing number of migrations from different not-yet-or-never-to-be merged branches.
 
-You might forget to rollback after working on a branch. In that case, when working on a new branch, make sure you pull a pristine `structure.sql` file from master before creating any new migrations.
+There are two strategies to ensure that `structure.sql` file only contains the necessary changes to a specific branch:
+
+- Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n`, where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
+
+- [DANGER: this deletes the development data] You might forget to rollback after working on a branch. In that case, when working on a new branch and before creating a new migration, make sure you pull `structure.sql` from master and run `db:setup`.
 
 [source](https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html)
 
