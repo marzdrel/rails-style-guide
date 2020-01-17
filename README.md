@@ -477,15 +477,7 @@ Use `#update` or `.create` only with corresponding `if` check.
 Do not use string concatenation and interpolation, use [Kernel.format](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) (`Kernel%sprintf`'s alias) instead:
 
 ```ruby
-format("Your order id is %<order_id>s", order_id: 2)
-# => "Your order id is 2"
-format(
-  "%<title>s - %<description>s - %<country_code>s",
-  title: "title",
-  description: "description",
-  country_code: "country_code",
-)
-# => "title - description - country_code"
+format("Hello %<name>s!", name: "Tom") # => "Hello Tom!"
 ```
 
 Read more [here](https://batsov.com/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/) and
