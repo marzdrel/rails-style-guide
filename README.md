@@ -494,9 +494,9 @@ There are two strategies to ensure that `structure.sql` file only contains the n
 
 - Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n`, where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
 
-- [DANGER: this deletes the development data] You might forget to rollback after working on a branch. In that case, when working on a new branch and before creating a new migration, make sure you pull `structure.sql` from master and run `db:setup`.
+- Creating a new database for each branch with `psql -c 'CREATE DATABASE targetdb WITH TEMPLATE sourcedb;`
 
-[source](https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html)
+[Read more](https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html)
 
 ## Ruby Code Style Guide
 
