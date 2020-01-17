@@ -17,6 +17,7 @@ Guides for programming in good, consistent style
   - [Do not add custom controller actions](#do-not-add-custom-controller-actions)
   - [How to update records](#how-to-update-records)
   - [How to work with strings](#how-to-work-with-strings)
+  - [How to work with migrations](#how-to-work-with-migrations)
 - [Ruby Code Style Guide](#ruby-code-style-guide)
 - [Goodreads](#goodreads)
   - [Articles](#articles)
@@ -484,6 +485,14 @@ gem "powerpack", require: "powerpack/string/format"
 
 Check [ruby documentation](https://ruby-doc.org/core-2.6.1/Kernel.html#method-i-format) and
 [examples](https://www.rubyguides.com/2012/01/ruby-string-formatting/).
+
+### How to work with migrations
+
+Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n` where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
+
+You might forget to rollback after working on a branch. In that case, when working on a new branch, make sure you pull a pristine `structure.sql` file from master before creating any new migrations.
+
+[source](https://blog.appsignal.com/2020/01/15/the-pros-and-cons-of-using-structure-sql-in-your-ruby-on-rails-application.html)
 
 ## Ruby Code Style Guide
 
