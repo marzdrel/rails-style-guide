@@ -500,6 +500,7 @@ This section contains links to usefull articles, books, videos, podcasts and oth
 
 ### Articles
 
+- [ROM + Dry Showcase: Part 1 (2020)](https://ryanbigg.com/2020/02/rom-and-dry-showcase-part-1)
 - [The worst mistake of computer science - Paul Draper (2019)](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
 - [7 Patterns to Refactor Fat ActiveRecord Models - Bryan Helmkamp (2012)](https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models/)
 - [The 80/24 rule (2019)](https://blog.ploeh.dk/2019/11/04/the-80-24-rule/)
