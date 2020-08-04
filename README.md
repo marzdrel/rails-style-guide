@@ -404,7 +404,7 @@ loaded using preferred method and if the Method Object is called using
 expected method with provided parameteres. Test the core logic in the
 Method Object spec outside the worker code.
 
-```
+```ruby
 class Agent::Blocker::Worker
   include Sidekiq::Worker
   include RedisMutex::Macro
