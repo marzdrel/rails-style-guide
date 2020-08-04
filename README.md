@@ -128,6 +128,7 @@ class Divider
 
   def call
     return 0 if arg2.zero?
+
     arg1 / arg2
   end
 
