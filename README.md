@@ -364,29 +364,26 @@ including examples `it`, `before` blocks or `let` definitions as well.
 
 ```ruby
 describe "#call" do
-    # No spaces between one line blocks
-    let(:order) { instance_double(Order) }
-    let(:instance) { described_class.new(order, attributes) }
-    let(:uuid) { "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }
-    let(:order_uuid) { "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy" }
-    let(:price) { "137.00" }
-    # Space here
-    let(:attributes) do
-      {
-        uuid: uuid,
-        order_uuid: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        amount: "%.2f".format(price),
-        headers: { "HTTP_VERSION" => "1" },
-      }
-    end
-    # And here
-    let(:params) do
-      # ...
-    end
-    # And obviously here
-    context "" do
-      # ...
-    end
+  let(:instance) { described_class.new(order, attributes) }
+  let(:price) { "137.00" } # ^^^  No spaces between one line blocks
+  let(:order) { instance_double(Order) }
+
+  let(:attributes) do # ^^^ Space here
+    {
+      uuid: uuid,
+      order_uuid: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+      amount: "%.2f".format(price),
+      headers: { "HTTP_VERSION" => "1" },
+    }
+  end
+
+  let(:params) do # ^^^ And here
+    # ...
+  end
+
+  context "" do # ^^^ And obviously here
+    # ...
+  end
 end
 ```
 
@@ -488,9 +485,19 @@ Details:
 
 ### How to work with migrations
 
-One of the biggest pains when using `structure.sql` is ensuring that only the required changes get committed to that file. When you pull someone’s branch and run the migrations specific to that branch, your `structure.sql` will now contain some changes. Say, you then go back to working on your own branch and generate a new migration. Your `structure.sql` file will now contain both your branch’s and the other branch’s changes. This only gets  worse with growing number of migrations from different not-yet-or-never-to-be merged branches.
+One of the biggest pains when using `structure.sql` is ensuring that only the
+required changes get committed to that file. When you pull someone’s branch
+and run the migrations specific to that branch, your `structure.sql` will now
+contain some changes. Say, you then go back to working on your own branch and
+generate a new migration. Your `structure.sql` file will now contain both your
+branch’s and the other branch’s changes. This only gets worse with growing
+number of migrations from different not-yet-or-never-to-be merged branches.
 
-Here is the strategy to ensure that `structure.sql` file only contains the necessary changes to a specific branch. Once you are done working on a branch that contains migrations, make sure you run rails `db:rollback STEP=n`, where `n` is the number of migrations in that branch. This will ensure your database structure reverts to its original state.
+Here is the strategy to ensure that `structure.sql` file only contains the
+necessary changes to a specific branch. Once you are done working on a branch
+that contains migrations, make sure you run rails `db:rollback STEP=n`, where
+`n` is the number of migrations in that branch. This will ensure your database
+structure reverts to its original state.
 
 Details:
 
