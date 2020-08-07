@@ -372,9 +372,11 @@ describe "#call" do
   let(:attributes) do # ^^^ Space here
     {
       uuid: uuid,
-      order_uuid: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-      amount: "%.2f".format(price),
-      headers: { "HTTP_VERSION" => "1" },
+      order_uuid: "a1dfdf7c-39d3-49b6-9ba1-1f0fc4f900e8",
+      amount: "%.2<price>f".format(price: price),
+      headers: {
+        "HTTP_VERSION" => "1",
+      },
     }
   end
 
@@ -382,7 +384,7 @@ describe "#call" do
     # ...
   end
 
-  context "" do # ^^^ And obviously here
+  context "with missing argument" do # ^^^ And obviously here
     # ...
   end
 end
