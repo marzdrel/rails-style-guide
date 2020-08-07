@@ -512,6 +512,127 @@ Projects related to style guide and code formatting:
 - https://github.com/samphippen/rubyfmt
 - https://github.com/rubocop-hq/rubocop
 - https://github.com/uohzxela/clean-code-ruby
+- https://github.com/airbnb/ruby
+- https://github.com/rubocop-hq/ruby-style-guide
+
+## Our Guideless for Ruby Code
+
+We try to align our coding style with general Rubocop defaults. This repository
+contains generic Rubocop configuration used in out projects. Make sure you have an
+operational linter in your code editor, so you commit as little mismatched code
+as possible. We have a HoundCi watching our repos, but comments generate noise, so
+make sure to double check your style before pushing your commits outside.
+
+### Identation
+
+We use soft-tabs with a two space indent. Never ident your code for more than
+one level at each step.
+
+```ruby
+# This is GOOD
+kind =
+  case year
+  when 1850..1889 then "Blues"
+  when 1890..1909 then "Ragtime"
+  else "Jazz"
+  end
+
+# This is BAD
+kind = case year
+       when 1850..1889 then "Blues"
+       when 1890..1909 then "Ragtime"
+       else "Jazz"
+       end
+
+# This is GOOD
+def self.create_translation(
+  phrase_id,
+  phrase_key,
+  value,
+  user_id
+)
+  ...
+end
+
+# This is BAD
+def self.create_translation(phrase_id, phrase_key
+                            value, user_id)
+  ...
+end
+
+# This is BAD
+def self.create_translation(phrase_id,
+                            phrase_key,
+                            value,
+                            user_id)
+  ...
+end
+```
+
+### Maximum Line Length
+
+Always limit lines to 80 characters in Ruby code. There are no exceptions to
+this rule. Any auto-generated code (Rails/RSpec/gems/etc) are excluded from checks,
+so we do not correct any style offences there. If you have to include
+any static data with long lines in your code move them to separate files
+(YAML/JSON).
+
+Views are allowed to have more than 80 long lines, but try to limit long lines
+there if possible, especially in non-erb templates (Haml/Slim).
+
+This is an excerpt from Rubocop style guide.
+
+> Why Bother with 80 characters in a World of Modern Widescreen Displays?
+
+> A lot of people these days feel that a maximum line length of 80 characters
+> is just a remnant of the past and makes little sense today. After all -
+> modern displays can easily fit 200+ characters on a single line. Still, there
+> are some important benefits to be gained from sticking to shorter lines of
+> code.
+
+> First, and foremost - numerous studies have shown that humans read much
+> faster vertically and very long lines of text impede the reading process. As
+> noted earlier, one of the guiding principles of this style guide is to
+> optimize the code we write for human consumption.
+
+> Additionally, limiting the required editor window width makes it possible to
+> have several files open side-by-side, and works well when using code review
+> tools that present the two versions in adjacent columns.
+
+> The default wrapping in most tools disrupts the visual structure of the
+> code, making it more difficult to understand. The limits are chosen to avoid
+> wrapping in editors with the window width set to 80, even if the tool places
+> a marker glyph in the final column when wrapping lines. Some web based tools
+> may not offer dynamic line wrapping at all.
+
+> Some teams strongly prefer a longer line length. For code maintained
+> exclusively or primarily by a team that can reach agreement on this issue,
+> it is okay to increase the line length limit up to 100 characters, or all
+> the way up to 120 characters. Please, restrain the urge to go beyond 120
+> characters.
+
+If possible limit your line length even more, to 60 characters. Longer lines
+tend to pack a lot of logic into very small visual space. We try to break our
+code into very minimal pieces and doing long method chains in one line defeates
+this purpose.
+
+Do not cripple your code in order to meet line length requirement. If you
+have a hard time fitting into a line (or a method), this is a signal you should
+expand your code (or extract some logic into other class/method).
+
+```ruby
+# This is GOOD
+users.map do |user|
+  format(
+    "Hello %<firstname>s %<lastname>s!",
+    firstname: user.firstname,
+    lastname: user.lastname,
+  )
+end
+
+# This is BAD
+users.map { format("Hello %<fn>s %<ln>s!", fn: _1.firstname, ln: _1.lastname) }
+```
 
 ## Goodreads
 
