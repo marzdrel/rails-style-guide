@@ -515,7 +515,7 @@ Projects related to style guide and code formatting:
 - https://github.com/airbnb/ruby
 - https://github.com/rubocop-hq/ruby-style-guide
 
-## Our Guideless for Ruby Code
+## Our Guides for Ruby Code
 
 We try to align our coding style with general Rubocop defaults. This repository
 contains generic Rubocop configuration used in out projects. Make sure you have an
