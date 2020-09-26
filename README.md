@@ -8,11 +8,11 @@ Guides for programming in good, consistent style
 - [Git](#git)
   - [How to make commits](#how-to-make-commits)
   - [How to write commit messages](#how-to-write-commit-messages)
-  - [Suggested GitHub flow](#github-flow)
-  - [Ignored files](#git-ignored-files)
+  - [Suggested GitHub flow](#suggested-github-flow)
+  - [Ignored files](#ignored-files)
 - [RSpec](#rspec)
 - [Sidekiq](#sidekiq)
-- [Rails and Ruby tips](#rails-and-ruby-tips)
+- [Rails and Ruby coding guide](#rails-and-ruby-coding-guide)
   - [Method Objects](#method-objects)
   - [Method Objects Specs](#method-objects-specs)
   - [Custom controller actions](#do-not-add-custom-controller-actions)
@@ -91,7 +91,6 @@ Details:
   ```
 
   ![Github draft Pull Request](https://i1.wp.com/user-images.githubusercontent.com/3477155/52671177-5d0e0100-2ee8-11e9-8645-bdd923b7d93b.gif?resize=1024%2C512&ssl=1)
-
 - Add a link to a newly created PR to the very end of a Trello ticket description.
 - When ready, change the status to 'Ready for review' near the bottom of your pull request to remove the draft state.
 
@@ -252,7 +251,7 @@ class Agent::Blocker::Worker
 end
 ```
 
-## Rails and Ruby tips
+## Rails and Ruby coding guide
 
 ### Method Objects
 
@@ -459,7 +458,6 @@ controller with a REST action, that would correspond to `update_payment`:
 
 ```ruby
 class WebHooksController < ApplicationController
-
   def update
     # web hook logic
   end
@@ -478,15 +476,34 @@ Details:
 
 ### How to update records
 
-Whenever record is being created or updated use `.create!` or `#update!` to prevent silent failing.
-Use `#update` or `.create` only with corresponding `if` check.
+Whenever record is being created or updated use `.create!` or `#update!` to
+prevent silent failing. Use `#update` or `.create` only with corresponding `if`
+check.
 
 ### How to work with strings
 
-Do not use string concatenation and interpolation, use `Kernel.format` (`Kernel%sprintf`'s alias) instead:
+Do not use string concatenation and interpolation, use `Kernel.format`
+(`Kernel%sprintf`'s alias) instead. Benefit of this approach might
+not be obvious for short strings, but we want't to keep the code base
+consistent. String interpolations can quickly lead to very dense code with
+logic embedded inside the `#{...}` calls.
 
 ```ruby
 format("Hello %<name>s!", name: "Tom") # => "Hello Tom!"
+```
+
+Use `heredocs` for strings longer than maximum line length.
+
+```ruby
+def command
+  format(
+    <<~TXT.squish,
+      ssh -o "StrictHostKeyChecking=no" -l account%<seat>s -T
+      192.168.186.%<seat>s 'xwd -root -display :0|convert xwd:- png:-'
+    TXT
+    seat: user.seat,
+  )
+end
 ```
 
 Details:
@@ -647,7 +664,8 @@ users.map { format("Hello %<fn>s %<ln>s!", fn: _1.firstname, ln: _1.lastname) }
 
 ## Goodreads
 
-This section contains links to usefull articles, books, videos, podcasts and other resources.
+This section contains links to usefull articles, books, videos, podcasts and
+other resources.
 
 ### Articles
 
