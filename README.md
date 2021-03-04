@@ -669,6 +669,7 @@ other resources.
 
 ### Articles
 
+- [Hi! It's me, your flaky system test again (2021)](https://nopecode.com/2021/03/03/your-flaky-system-test-again.html)
 - [Reasons why SELECT * is bad for SQL performance (2020)](https://tanelpoder.com/posts/reasons-why-select-star-is-bad-for-sql-performance/)
 - [ROM + Dry Showcase: Part 1 (2020)](https://ryanbigg.com/2020/02/rom-and-dry-showcase-part-1)
 - [The worst mistake of computer science - Paul Draper (2019)](https://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/)
