@@ -90,7 +90,6 @@ Details:
   $ git push origin new_feature_branch
   ```
 
-  ![Github draft Pull Request](https://i1.wp.com/user-images.githubusercontent.com/3477155/52671177-5d0e0100-2ee8-11e9-8645-bdd923b7d93b.gif?resize=1024%2C512&ssl=1)
 - Add a link to a newly created PR to the very end of a Trello ticket description.
 - When ready, change the status to 'Ready for review' near the bottom of your pull request to remove the draft state.
 
