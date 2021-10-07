@@ -669,6 +669,7 @@ other resources.
 
 ### Articles
 
+- [Why We Killed Our End-to-End Test Suite (2021)](https://building.nubank.com.br/why-we-killed-our-end-to-end-test-suite)
 - [Responsible Monkeypatching in Ruby (2021)](https://blog.appsignal.com/2021/08/24/responsible-monkeypatching-in-ruby.html)
 - [Hi! It's me, your flaky system test again (2021)](https://nopecode.com/2021/03/03/your-flaky-system-test-again.html)
 - [Reasons why SELECT * is bad for SQL performance (2020)](https://tanelpoder.com/posts/reasons-why-select-star-is-bad-for-sql-performance/)
