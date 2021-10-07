@@ -707,11 +707,9 @@ to hosts / guests beeing Rails developers:
 - [The Bike Shed](https://bikeshed.fm/)
 - [Rails with Jason](https://www.codewithjason.com/rails-with-jason-podcast/)
 - [Ruby on Rails Podcast](http://5by5.tv/rubyonrails)
-- [Tech Done Right](https://www.techdoneright.io/)
-- [Parallel Passion](https://www.parallelpassion.com/)
 - [Remote Ruby](https://remoteruby.transistor.fm/)
 - [Art of Product](https://artofproductpodcast.com/)
-- [Ruby Rouge](https://devchat.tv/ruby-rogues/)
+- [Ruby Rouges](https://devchat.tv/ruby-rogues/)
 
 General development (or tech business) related podcasts:
 
@@ -734,3 +732,5 @@ Discontinued, but worth mentioning:
 
 - [The Ruby Testing Podcast](https://www.codewithjason.com/ruby-testing-podcast/)
 - [YakShave](http://yakshave.fm/)
+- [Tech Done Right](https://www.techdoneright.io/)
+- [Parallel Passion](https://www.parallelpassion.com/)
