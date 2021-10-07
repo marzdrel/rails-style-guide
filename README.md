@@ -67,7 +67,7 @@ Guides for programming in good, consistent style
 Details:
 
 - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-- https://github.com/thoughtbot/guides/blob/master/protocol/git/README.md
+- https://github.com/thoughtbot/guides/blob/main/git
 
 ### Suggested GitHub flow
 
