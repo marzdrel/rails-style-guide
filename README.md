@@ -687,6 +687,8 @@ other resources.
 
 ### Videos
 
+- [When To Use Microservices - Sam Newman & Martin Fowler (2020)](https://www.youtube.com/watch?v=GBTdnfD6s5Q)
+- [Mastering Chaos - A Netflix Guide to Microservices - Josh Evants (2016)](https://www.youtube.com/watch?v=CZ3wIuvmHeM)
 - [Nothing is Something - Sandi Metz (2015)](https://www.youtube.com/watch?v=29MAL8pJImQ)
 - [Refactoring Ruby with Monads (2014)](https://codon.com/refactoring-ruby-with-monads)
 - [Boundaries - Gary Bernhardt (2012)](https://www.destroyallsoftware.com/talks/boundaries)
